@@ -16,12 +16,10 @@ pylint3 xterm
 ```
 
 The branch will be based on the release type Linux or Android with release manifests in each branch tied to the base releases.
-
+    
 For example for Advantech imx Linux Yocto Project releases the branches will be <Yocto Project release> so zeus with
-all manifests tied to releases on zeus in this branch.
-
+all manifests tied to releases on zeus in this branch.    
 To use this manifest repo, the 'repo' tool must be isntalled first.
---------------------------------------------------------
 ```
 $: mkdir ~/bin
 $: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo  > ~/bin/repo
@@ -39,8 +37,7 @@ $: repo sync
 
 Each branch will have detailed READMEs describing exact syntax.
 
-Examples
---------
+Examples    
 To download the NXP 5.4.70-2.3.3 release
 ```
 repo init -u https://github.com/Advantech-IIoT/adv-imx-yocto-bsp  -b zeus -m adv-imx-zeus-1.0.0.xml
@@ -48,23 +45,21 @@ repo init -u https://github.com/Advantech-IIoT/adv-imx-yocto-bsp  -b zeus -m adv
 
 Setup the build folder for a BSP release:
 -----------------------------------------
-Note: The remaining instructions are for setting up a BSP release only. For setting
-up a demo, please see adv-imx-yocto-bsp/README-<demo> for further instructions.
+Note: The remaining instructions are for setting up a BSP release only. For setting   
+up a demo, please see adv-imx-yocto-bsp/README-<demo> for further instructions.   
 ```
 $: [MACHINE=<machine>] [DISTRO=fsl-imx-<backend>] source ./imx-setup-release.sh -b <build path>
-
-<machine> defaults to imx8mmeamb9918a1
-
-<backend>   Graphics backend type
-xwayland    Wayland with X11 support - default distro
-wayland     Wayland
-fb          Framebuffer (not supported for mx8)
 ```
+<machine> defaults to imx8mmeamb9918a1    
+<backend>   Graphics backend type   
+xwayland    Wayland with X11 support - default distro   
+wayland     Wayland   
+fb          Framebuffer (not supported for mx8)   
 
 Note if the poky community distro is used then build breaks will happen with some
-components using our meta-fsl-bsp-release layer.
+components using our meta-fsl-bsp-release layer.    
 
-Examples:
+Examples:   
 - Setup for XWayland.
 ```
 $: MACHINE=imx8mmeamb9918a1 DISTRO=fsl-imx-xwayland source ./imx-setup-release.sh -b eamb9918a1
@@ -78,20 +73,28 @@ $: source setup-environment <build path>
 Build an image:
 ---------------
 ```
-bitbake <image recipe>
-
-Some image recipes:
-imx-image-core - core image with basic graphics and no multimedia
-imx-image-multimedia - image with multimedia and graphics
-imx-image-full - image with multimedia and machine learning and Qt
+$ bitbake <image recipe>
 ```
+Some image recipes:   
+imx-image-core - core image with basic graphics and no multimedia   
+imx-image-multimedia - image with multimedia and graphics   
+imx-image-full - image with multimedia and machine learning and Qt    
+swupdate-image - advantech OTA recovery initrd image    
+
+When finished the building, the target file is generated in tmp/deploy/images/${MACHINE}/   
+|image|filename|
+|---|---|
+|uboot image| imx-boot |
+|kernel image|Image|
+|kernel dtb|xxx.dtb|
+|rootfs with compressed package|imx-image-full-xxx|
+|ota recovery initrd|swupdate-image-xxx|
 
 Build an SDK:
 ---------------
 ```
-bitbake <sdk recipe>
-
-Some sdk recipes:
-meta-toolchain-qt5: sdk with qt5
-meta-toolchain: native sdk without qt.
-``` 
+$ bitbake <sdk recipe>
+```
+Some sdk recipes:   
+meta-toolchain-qt5: sdk with qt5    
+meta-toolchain: native sdk without qt.     
