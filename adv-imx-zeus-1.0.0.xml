@@ -21,7 +21,7 @@
   </project>
 
   <project name="meta-browser" path="sources/meta-browser" remote="OSSystems" revision="9378af40d7db6d9a87474523deef4752b011d444"/>
-  <project name="meta-clang" path="sources/meta-clang" remote="clang" revision="711e593d5984aad3bf35c51b7ac4482982bc16c7"/>
+  <project name="meta-clang" path="sources/meta-clang" remote="clang" revision="76c6751d721a4265e01bb71d8dc4fb46dca6602f"/>
 
   <project name="meta-freescale" path="sources/meta-freescale" remote="community" revision="14f1a630a47375432f93c556927b879b51d84c4e"/>
   <project name="meta-freescale-3rdparty" path="sources/meta-freescale-3rdparty" remote="community" revision="dbcc686f52c3c84db8cb86aa8973a4e373651b98"/>
