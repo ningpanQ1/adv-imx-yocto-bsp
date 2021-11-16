@@ -7,6 +7,10 @@ Supported boards
 i.MX8MM Series
 - EAMB9918 A1
 
+## Host PC Requirement
+**RAM： >= 16GB**
+**DISK  >= 128GB**
+
 Specific instructions will reside in READMEs in each branch.
 ```
 sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
