@@ -4,7 +4,7 @@
   <default sync-j="2"/>
 
   <remote fetch="https://source.codeaurora.org/external/imx" name="CAF"/>
-  <remote fetch="https://github.com/jwzl" name="OSSystems"/>
+  <remote fetch="https://github.com/Advantech-IIoT/" name="meta-browser"/>
   <remote fetch="https://github.com/meta-qt5"  name="QT5"/>
   <remote fetch="https://github.com/TimesysGit"  name="Timesys"/>
   <remote fetch="https://github.com/kraj" name="clang"/>
@@ -20,7 +20,7 @@
     <linkfile dest="README" src="README"/>
   </project>
 
-  <project name="meta-browser" path="sources/meta-browser" remote="OSSystems" revision="9378af40d7db6d9a87474523deef4752b011d444"/>
+  <project name="meta-browser" path="sources/meta-browser" remote="meta-browser" revision="9378af40d7db6d9a87474523deef4752b011d444"/>
   <project name="meta-clang" path="sources/meta-clang" remote="clang" revision="76c6751d721a4265e01bb71d8dc4fb46dca6602f"/>
 
   <project name="meta-freescale" path="sources/meta-freescale" remote="community" revision="14f1a630a47375432f93c556927b879b51d84c4e"/>
