@@ -2,6 +2,7 @@ Advantech imx yocto bsp Repo Manifest README
 
 This repo is used to download manifests for Advantech imx yocto bsp releases.
 
+Do not use the BSP as root , use normal user rights. 
 Supported boards
 ----------------
 i.MX8MM Series
