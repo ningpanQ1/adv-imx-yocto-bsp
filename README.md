@@ -10,7 +10,7 @@ i.MX8MM Series
 - EAMB9918 A1
 
 ## Host PC Requirement
-**RAM： >= 16GB**
+**RAM： >= 16GB**   
 **DISK  >= 200GB**
 
 Specific instructions will reside in READMEs in each branch.
@@ -119,11 +119,16 @@ When finished the building, the target file is generated in tmp/deploy/images/${
 ```
 $sudo dd if=${SDimgfile} of=${SDpartition} bs=4096
 ```
+Examples:
+```
+$sudo dd if=eamb9918-sdcard_1.0.0.img of=/dev/sde bs=4096
+```
+
 Note: You should check which partition is your microSD card
 firstly and you can format your microSD card before this step to avoid compatibility
 issue.
     
-If your PC is Windows:
+If your PC is Windows:    
 Use the Rufus or Raspberry Pi Imager provided by Raspberry Pi to burn the img
 file to your microSD card. You can refer to below link for the usage of the tools.    
 Raspberry Pi Imager:    
