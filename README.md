@@ -2,15 +2,16 @@ Advantech imx yocto bsp Repo Manifest README
 
 This repo is used to download manifests for Advantech imx yocto bsp releases.
 
-Do not use the BSP as root , use normal user rights. 
+Do not use the BSP as root , use normal user rights.    
+
 Supported boards
 ----------------
 i.MX8MM Series
 - EAMB9918 A1
 
 ## Host PC Requirement
-**RAM： >= 16GB**
-**DISK  >= 128GB**
+**RAM： >= 16GB**   
+**DISK  >= 200GB**
 
 Specific instructions will reside in READMEs in each branch.
 ```
@@ -103,3 +104,34 @@ $ bitbake <sdk recipe>
 Some sdk recipes:   
 meta-toolchain-qt5: sdk with qt5    
 meta-toolchain: native sdk without qt.     
+
+
+Build a SDCard image:  
+---------------
+After building a image according to the above instructions ,you can burn the sdcard img file to your microSD card.
+```
+$ bitbake <sdcard image recipe>
+```
+sdcard image recipe:   
+mk-sdcard-image : 
+ 
+When finished the building, the target file is generated in tmp/deploy/images/${MACHINE}/mk-sdcard-image/out/     
+```
+$sudo dd if=${SDimgfile} of=${SDpartition} bs=4096
+```
+Examples:
+```
+$sudo dd if=eamb9918-sdcard_1.0.0.img of=/dev/sde bs=4096
+```
+
+Note: You should check which partition is your microSD card
+firstly and you can format your microSD card before this step to avoid compatibility
+issue.
+    
+If your PC is Windows:    
+Use the Rufus or Raspberry Pi Imager provided by Raspberry Pi to burn the img
+file to your microSD card. You can refer to below link for the usage of the tools.    
+Raspberry Pi Imager:    
+https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/    
+Rufus:    
+https://rufus.ie/en/    
