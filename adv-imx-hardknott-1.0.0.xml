@@ -28,7 +28,7 @@
 
   <project name="meta-imx" path="sources/meta-imx" remote="CAF" revision="refs/tags/rel_imx_5.10.72_2.2.1" upstream="hardknott-5.10.72-2.2.1"/>
 
-  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="ac9a133b4f89beaf5685d630e7d5d300bbbbcba5" dest-branch="hardknott" upstream="hardknott">
+  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="8221dbdea245282c462144e2af9f20bb013d1293" dest-branch="hardknott" upstream="hardknott">
     <linkfile dest="README-ADVBSP" src="meta-adv-imx/README.md"/>
     <linkfile dest="imx-setup-release.sh" src="meta-adv-imx/imx-setup-release.sh"/>
     <linkfile dest="setup-environment" src="meta-adv-imx/setup-environment"/>
