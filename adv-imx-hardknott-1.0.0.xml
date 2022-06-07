@@ -20,7 +20,7 @@
     <linkfile dest="README" src="README"/>
   </project>
 
-  <project name="meta-browser" path="sources/meta-browser" remote="OSSystems" revision="061358de8e9aa050487b86123c577a9ab65878c4"/>
+  <project name="meta-browser" path="sources/meta-browser" remote="OSSystems" revision="d25d8ee98a656b2534d0eec6138ef264529fab4f"/>
   <project name="meta-clang" path="sources/meta-clang" remote="clang" revision="2207df98559afc19d6a0243027bbac18980fc764" upstream="hardknott"/>
   <project name="meta-freescale" path="sources/meta-freescale" remote="community" revision="469d6c958c76ea235b3d3c1527e797ce3a7392e3" upstream="hardknott"/>
   <project name="meta-freescale-3rdparty" path="sources/meta-freescale-3rdparty" remote="community" revision="f8150f3b37cb83cba1f9e2378e57bb63e02d4610" upstream="hardknott"/>
@@ -28,7 +28,7 @@
 
   <project name="meta-imx" path="sources/meta-imx" remote="CAF" revision="refs/tags/rel_imx_5.10.72_2.2.1" upstream="hardknott-5.10.72-2.2.1"/>
 
-  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="8221dbdea245282c462144e2af9f20bb013d1293" dest-branch="hardknott" upstream="hardknott">
+  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="91f8e814d8da9b281346051e41d6e49f2e7cdbd5" dest-branch="hardknott" upstream="hardknott">
     <linkfile dest="README-ADVBSP" src="meta-adv-imx/README.md"/>
     <linkfile dest="imx-setup-release.sh" src="meta-adv-imx/imx-setup-release.sh"/>
     <linkfile dest="setup-environment" src="meta-adv-imx/setup-environment"/>
