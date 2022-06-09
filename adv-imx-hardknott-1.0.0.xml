@@ -15,6 +15,7 @@
   <remote name="python2" fetch="https://git.openembedded.org"/>
   <remote name="rust" fetch="https://github.com/meta-rust"/>
   <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
+  <remote name="qt5-extra" fetch="https://github.com/schnitzeltony"/>
 
   <project name="fsl-community-bsp-base" path="sources/base" remote="community" revision="5a551f453260bd19895e4d847877874eaa51fde3" upstream="hardknott">
     <linkfile dest="README" src="README"/>
@@ -41,4 +42,5 @@
   <project name="meta-timesys" path="sources/meta-timesys" remote="Timesys" revision="93bf122d77e77aac1a917865538df84f148a8fcc" upstream="gatesgarth"/>
   <project name="meta-virtualization" path="sources/meta-virtualization" remote="yocto" revision="7f719ef40896b6c78893add8485fda995b00d51d" upstream="hardknott"/>
   <project name="poky" path="sources/poky" remote="yocto" revision="269265c00091fa65f93de6cad32bf24f1e7f72a3" upstream="hardknott"/>
+  <project name="meta-qt5-extra" path="sources/meta-qt5-extra" remote="qt5-extra" revision="6575019b7b6632c38bfda695a27802fc0176087d" upstream="hardknott"/>
 </manifest>
