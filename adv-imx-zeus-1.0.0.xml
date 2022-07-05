@@ -29,7 +29,7 @@
 
   <project name="meta-imx" path="sources/meta-imx" remote="CAF" revision="refs/tags/rel_imx_5.4.70_2.3.3" upstream="zeus-5.4.70-2.3.3"/>
   
-  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="9d1e381de0e0e2891dd022617a038ec1688203ee" dest-branch="zeus" upstream="zeus">
+  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="de4fb2c5b0fa1772a3fbf5547d08656804d6c780" dest-branch="zeus" upstream="zeus">
     <linkfile dest="README-ADVBSP" src="meta-adv-imx/README.md"/>
     <linkfile dest="imx-setup-release.sh" src="meta-adv-imx/imx-setup-release.sh"/>
     <linkfile dest="setup-environment" src="meta-adv-imx/setup-environment"/>
