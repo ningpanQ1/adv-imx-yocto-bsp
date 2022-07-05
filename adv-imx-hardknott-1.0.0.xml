@@ -15,7 +15,8 @@
   <remote name="python2" fetch="https://git.openembedded.org"/>
   <remote name="rust" fetch="https://github.com/meta-rust"/>
   <remote name="yocto" fetch="https://git.yoctoproject.org/git"/>
-
+  <remote name="readonly-rootfs-overlay" fetch="https://github.com/Advantech-IIoT"/>
+  
   <project name="fsl-community-bsp-base" path="sources/base" remote="community" revision="5a551f453260bd19895e4d847877874eaa51fde3" upstream="hardknott">
     <linkfile dest="README" src="README"/>
   </project>
@@ -28,7 +29,7 @@
 
   <project name="meta-imx" path="sources/meta-imx" remote="CAF" revision="refs/tags/rel_imx_5.10.72_2.2.1" upstream="hardknott-5.10.72-2.2.1"/>
 
-  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="e0e46a1f1061396797814910fb38373c58f5becc" dest-branch="hardknott" upstream="hardknott">
+  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="ebe734cb0820fbda7554e30b16031522c84fc796" dest-branch="hardknott" upstream="hardknott">
     <linkfile dest="README-ADVBSP" src="meta-adv-imx/README.md"/>
     <linkfile dest="imx-setup-release.sh" src="meta-adv-imx/imx-setup-release.sh"/>
     <linkfile dest="setup-environment" src="meta-adv-imx/setup-environment"/>
@@ -41,4 +42,5 @@
   <project name="meta-timesys" path="sources/meta-timesys" remote="Timesys" revision="93bf122d77e77aac1a917865538df84f148a8fcc" upstream="gatesgarth"/>
   <project name="meta-virtualization" path="sources/meta-virtualization" remote="yocto" revision="7f719ef40896b6c78893add8485fda995b00d51d" upstream="hardknott"/>
   <project name="poky" path="sources/poky" remote="yocto" revision="269265c00091fa65f93de6cad32bf24f1e7f72a3" upstream="hardknott"/>
+  <project name="meta-readonly-rootfs-overlay" path="sources/meta-readonly-rootfs-overlay" remote="readonly-rootfs-overlay" revision="3e175a8bf4c1bbb13b0ac13bea766514dd55296f"/>
 </manifest>
