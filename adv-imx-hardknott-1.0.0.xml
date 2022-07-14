@@ -42,5 +42,5 @@
   <project name="meta-timesys" path="sources/meta-timesys" remote="Timesys" revision="93bf122d77e77aac1a917865538df84f148a8fcc" upstream="gatesgarth"/>
   <project name="meta-virtualization" path="sources/meta-virtualization" remote="yocto" revision="7f719ef40896b6c78893add8485fda995b00d51d" upstream="hardknott"/>
   <project name="poky" path="sources/poky" remote="yocto" revision="269265c00091fa65f93de6cad32bf24f1e7f72a3" upstream="hardknott"/>
-  <project name="meta-readonly-rootfs-overlay" path="sources/meta-readonly-rootfs-overlay" remote="readonly-rootfs-overlay" revision="852685b33a2d97595fc84af3d58173cfae86d15e"/>
+  <project name="meta-readonly-rootfs-overlay" path="sources/meta-readonly-rootfs-overlay" remote="readonly-rootfs-overlay" revision="fa20cd67e474713c1c08b54762caa25eeef38d91"/>
 </manifest>
