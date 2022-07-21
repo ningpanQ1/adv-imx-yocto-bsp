@@ -114,7 +114,14 @@ $ bitbake <sdcard image recipe>
 sdcard image recipe:   
 mk-sdcard-image : 
  
-When finished the building, the target file is generated in tmp/deploy/images/${MACHINE}/mk-sdcard-image/out/     
+When finished the building
+```
+$ cd  tmp/deploy/images/${MACHINE}/mk-sdcard-image/scripts
+$ sudo ./mkimg-linux.sh
+    
+```
+the target file is generated in tmp/deploy/images/${MACHINE}/mk-sdcard-image/out/${SDimgfile}     
+    
 ```
 $sudo dd if=${SDimgfile} of=${SDpartition} bs=4096
 ```
