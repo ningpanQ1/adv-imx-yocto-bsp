@@ -12,7 +12,7 @@ i.MX8MM Series
 **DISK  >= 128GB**
 
 Specific instructions will reside in READMEs in each branch.
-```
+```sh
 $ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
 build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
 xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
@@ -23,11 +23,11 @@ The branch will be based on the release type Linux or Android with release manif
     
 For example for Advantech imx Linux Yocto Project releases the branches will be <Yocto Project release> so hardknott with all manifests tied to releases on hardknott (Yocto 3.3) in this branch.    
 To use this manifest repo, the 'repo' tool must be installed first.
-```
-$: mkdir ~/bin
-$: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo  > ~/bin/repo
-$: chmod a+x ~/bin/repo
-$: PATH=${PATH}:~/bin
+```sh
+$ mkdir ~/bin
+$ curl http://commondatastorage.googleapis.com/git-repo-downloads/repo  > ~/bin/repo
+$ chmod a+x ~/bin/repo
+$ PATH=${PATH}:~/bin
 ```
 
 To execute 
@@ -42,8 +42,8 @@ Each branch will have detailed READMEs describing exact syntax.
 
 Examples:    
 To download the NXP 5.10.72-2.2.0 release
-```
-repo init -u https://github.com/Advantech-IIoT/adv-imx-yocto-bsp  -b hardknott -m adv-imx-hardknott-1.0.0.xml
+```sh
+$repo init -u https://github.com/Advantech-IIoT/adv-imx-yocto-bsp  -b hardknott -m adv-imx-hardknott-1.0.0.xml
 ```
 
 Setup the build folder for a BSP release (first time):
@@ -57,9 +57,9 @@ MACHINE=<machine configuration name> is the machine name which points to the con
 
 DISTRO=<distro configuration name> is the distro, which configures the build environment and it is stored in meta-imx/meta-sdk/conf/distro. 
 
-DISTRO='fsl-imx-xwayland': Wayland with X11 support - default distro    
-DISTRO='fsl-imx-wayland' : Wayland    
-DISTRO='fsl-imx-fb'      : Framebuffer (not supported for i.mx8)    
+DISTRO=`fsl-imx-xwayland`: Wayland with X11 support - default distro    
+DISTRO=`fsl-imx-wayland` : Wayland    
+DISTRO=`fsl-imx-fb`      : Framebuffer (not supported for i.mx8)    
 
 
 -b <build dir> specifies the name of the build directory created by the imx-setup-release.sh script.
@@ -71,8 +71,8 @@ Note if the poky community distro is used then build breaks will happen with som
 
 Examples:   
 - Setup for XWayland.
-```shell
-$: MACHINE=imx8mmeamb9918a1 DISTRO=fsl-imx-xwayland source ./imx-setup-release.sh -b eamb9918a1
+```sh
+$ MACHINE=imx8mmeamb9918a1 DISTRO=fsl-imx-xwayland source ./imx-setup-release.sh -b eamb9918a1
 ```
 
 The local.conf file contains the machine and distro specifications:
@@ -89,8 +89,8 @@ To use an existing Yocto build directory (the build dir is exist):
 $: source setup-environment <build dir>
 ```
 Examples:   
-```
-$: source setup-environment eamb9918a1
+```sh
+$ source setup-environment eamb9918a1
 ```
 
 Build an image:
@@ -125,7 +125,7 @@ You can do the same for the extensible SDK using this command form:
   $ bitbake <image> -c populate_sdk_ext
 ```	
 Examples:
-```
+```sh
   $ bitbake imx-image-full -c populate_sdk	
   $ bitbake imx-image-full -c populate_sdk_ext
 ```
@@ -140,7 +140,7 @@ sdcard image recipe:
 mk-sdcard-image : 
  
 When finished the building
-```
+```sh
 $ cd  tmp/deploy/images/${MACHINE}/mk-sdcard-image/scripts
 $ sudo ./mkimg-linux.sh
     
@@ -151,7 +151,7 @@ the target file is generated in tmp/deploy/images/${MACHINE}/mk-sdcard-image/out
 $sudo dd if=${SDimgfile} of=${SDpartition} bs=4096
 ```
 Examples:
-```
+```sh
 $sudo dd if=eamb9918-sdcard_1.0.0.img of=/dev/sde bs=4096
 ```
 
