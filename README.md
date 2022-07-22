@@ -5,7 +5,7 @@ This repo is used to download manifests for Advantech imx yocto bsp releases.
 Supported boards
 ----------------
 i.MX8MM Series
-- EAMB9918 A1
+- EAMB9918 A1 : Advantech TPC-100 series device
 
 ## Host PC Requirement
 **RAM： >= 16GB**
@@ -21,9 +21,8 @@ pylint3 xterm rsync curl
 
 The branch will be based on the release type Linux or Android with release manifests in each branch tied to the base releases.
     
-For example for Advantech imx Linux Yocto Project releases the branches will be <Yocto Project release> so zeus with
-all manifests tied to releases on zeus in this branch.    
-To use this manifest repo, the 'repo' tool must be isntalled first.
+For example for Advantech imx Linux Yocto Project releases the branches will be <Yocto Project release> so hardknott with all manifests tied to releases on hardknott (Yocto 3.3) in this branch.    
+To use this manifest repo, the 'repo' tool must be installed first.
 ```
 $: mkdir ~/bin
 $: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo  > ~/bin/repo
@@ -41,37 +40,57 @@ $: repo sync
 
 Each branch will have detailed READMEs describing exact syntax.
 
-Examples    
+Examples:    
 To download the NXP 5.10.72-2.2.0 release
 ```
 repo init -u https://github.com/Advantech-IIoT/adv-imx-yocto-bsp  -b hardknott -m adv-imx-hardknott-1.0.0.xml
 ```
 
-Setup the build folder for a BSP release:
+Setup the build folder for a BSP release (first time):
 -----------------------------------------
 Note: The remaining instructions are for setting up a BSP release only. For setting   
 up a demo, please see adv-imx-yocto-bsp/README-<demo> for further instructions.   
 ```
-$: [MACHINE=<machine>] [DISTRO=fsl-imx-<backend>] source ./imx-setup-release.sh -b <build path>
+$: MACHINE=<machine name> DISTRO=fsl-imx-<backend> source ./imx-setup-release.sh -b <build dir>
 ```
-<machine> defaults to imx8mmeamb9918a1    
-<backend>   Graphics backend type   
-xwayland    Wayland with X11 support - default distro   
-wayland     Wayland   
-fb          Framebuffer (not supported for mx8)   
+MACHINE=<machine configuration name> is the machine name which points to the configuration file in conf/machine in meta-freescale and meta-imx. Default is `imx8mmeamb9918a1` for Advantech TPC-100. 
 
-Note if the poky community distro is used then build breaks will happen with some
-components using our meta-fsl-bsp-release layer.    
+DISTRO=<distro configuration name> is the distro, which configures the build environment and it is stored in meta-imx/meta-sdk/conf/distro. 
+
+DISTRO='fsl-imx-xwayland': Wayland with X11 support - default distro    
+DISTRO='fsl-imx-wayland' : Wayland    
+DISTRO='fsl-imx-fb'      : Framebuffer (not supported for i.mx8)    
+
+
+-b <build dir> specifies the name of the build directory created by the imx-setup-release.sh script.
+When the script is run, it prompts the user to accept the EULA. Once the EULA is accepted, the acceptance is stored in local.conf inside each build folder and the EULA acceptance query is no longer displayed for that build folder.
+After the script runs, the working directory is the one just created by the script, specified with the -b option. A conf folder is created containing the files bblayers.conf and local.conf.
+The <build dir>/conf/bblayers.conf file contains all the metalayers used in the i.MX Yocto Project release.
+
+Note if the poky community distro is used then build breaks will happen with some components using our meta-fsl-bsp-release layer.    
 
 Examples:   
 - Setup for XWayland.
-```
+```shell
 $: MACHINE=imx8mmeamb9918a1 DISTRO=fsl-imx-xwayland source ./imx-setup-release.sh -b eamb9918a1
 ```
 
-To use an existing Yocto build directory:
+The local.conf file contains the machine and distro specifications:
 ```
-$: source setup-environment <build path>
+MACHINE ??= 'imx8mmeamb9918a1'
+DISTRO ?= 'fsl-imx-xwayland'
+ACCEPT_FSL_EULA = "1"
+```
+
+To use an existing Yocto build directory (the build dir is exist):
+-----------------------------------------
+
+```
+$: source setup-environment <build dir>
+```
+Examples:   
+```
+$: source setup-environment eamb9918a1
 ```
 
 Build an image:
@@ -79,11 +98,12 @@ Build an image:
 ```
 $ bitbake <image recipe>
 ```
-Some image recipes:   
-imx-image-core - core image with basic graphics and no multimedia   
-imx-image-multimedia - image with multimedia and graphics   
-imx-image-full - image with multimedia and machine learning and Qt    
-swupdate-image - advantech OTA recovery initrd image    
+|Image reciptes|Target|Provided by layer|
+|---|---|---|
+|imx-image-core|core image with basic graphics and no multimedia|meta-imx/meta-sdk|
+|imx-image-multimedia|image with multimedia and GUI without any Qt content|meta-imx/meta-sdk|
+|imx-image-full|Builds an opensource Qt 5 image with Machine Learning features.  These images are only supported for i.MX SoC with hardware graphics. |meta-imx/meta-sdk|
+|swupdate-image|Advantech OTA recovery initrd image|meta-swupdate|
 
 When finished the building, the target file is generated in tmp/deploy/images/${MACHINE}/   
 |image|filename|
@@ -98,12 +118,17 @@ Build the SDK Installer
 -----------------------
 To build the SDK installer for a standard SDK and populate the SDK image, use the following command form. Be sure to replace image with an image (e.g. “imx-image-full”):						
 ```
-  $ bitbake image -c populate_sdk	
+  $ bitbake <image> -c populate_sdk	
 ```							
 You can do the same for the extensible SDK using this command form:						
 ```
-  $ bitbake image -c populate_sdk_ext
+  $ bitbake <image> -c populate_sdk_ext
 ```	
+Examples:
+```
+  $ bitbake imx-image-full -c populate_sdk	
+  $ bitbake imx-image-full -c populate_sdk_ext
+```
 
 Build a SDCard image:  
 ---------------
@@ -135,7 +160,7 @@ firstly and you can format your microSD card before this step to avoid compatibi
 issue.
     
 If your PC is Windows:    
-Use the Rufus or Raspberry Pi Imager provided by Raspberry Pi to burn the img
+Use the Rufus or Raspberry Pi Imager provided by Raspberry Pi to burn the image
 file to your microSD card. You can refer to below link for the usage of the tools.    
 Raspberry Pi Imager:    
 https://www.raspberrypi.com/news/raspberry-pi-imager-imaging-utility/    
