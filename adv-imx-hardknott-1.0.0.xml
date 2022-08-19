@@ -29,7 +29,7 @@
 
   <project name="meta-imx" path="sources/meta-imx" remote="CAF" revision="refs/tags/rel_imx_5.10.72_2.2.1" upstream="hardknott-5.10.72-2.2.1"/>
 
-  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="7bfdf2418a9bab0c03f7e9f5f84e9f77027e9503" dest-branch="hardknott" upstream="hardknott">
+  <project name="meta-advantech" path="sources/meta-advantech" remote="meta-advantech" revision="e42d8ea0bc42793aaee97e73fb1250398e4f5ed5" dest-branch="hardknott" upstream="hardknott">
     <linkfile dest="README-ADVBSP" src="meta-adv-imx/README.md"/>
     <linkfile dest="imx-setup-release.sh" src="meta-adv-imx/imx-setup-release.sh"/>
     <linkfile dest="setup-environment" src="meta-adv-imx/setup-environment"/>
@@ -42,5 +42,5 @@
   <project name="meta-timesys" path="sources/meta-timesys" remote="Timesys" revision="93bf122d77e77aac1a917865538df84f148a8fcc" upstream="gatesgarth"/>
   <project name="meta-virtualization" path="sources/meta-virtualization" remote="yocto" revision="7f719ef40896b6c78893add8485fda995b00d51d" upstream="hardknott"/>
   <project name="poky" path="sources/poky" remote="yocto" revision="269265c00091fa65f93de6cad32bf24f1e7f72a3" upstream="hardknott"/>
-  <project name="meta-readonly-rootfs-overlay" path="sources/meta-readonly-rootfs-overlay" remote="readonly-rootfs-overlay" revision="fa20cd67e474713c1c08b54762caa25eeef38d91"/>
+  <project name="meta-readonly-rootfs-overlay" path="sources/meta-readonly-rootfs-overlay" remote="readonly-rootfs-overlay" revision="a08995465c48421080b5974992c4677f512ffb9c"/>
 </manifest>
